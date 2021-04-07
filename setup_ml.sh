@@ -3,7 +3,11 @@
 set -e
 
 setup() {
-  apt-get update && apt-get install -y curl
+  apt-get update && apt-get install -y curl sqlite3
+
+  if ! type "go" > /dev/null; then
+    apt-get install -y golang
+  fi
 }
 
 install_xgboost() {
