@@ -20,7 +20,7 @@ install_xgboost() {
   # python3, xgboost
   apt-get update
   apt-get install -y python3 python3-pip
-  pip3 install xgboost pyinstaller
+  pip3 install xgboost
 }
 
 clean() {
