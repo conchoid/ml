@@ -1,0 +1,7 @@
+# docker build . --file=Dockerfile.test
+
+FROM debian:stretch-backports
+
+COPY ./setup_ml.sh /opt/setup_ml.sh
+
+RUN /opt/setup_ml.sh

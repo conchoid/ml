@@ -6,7 +6,12 @@ setup() {
   apt-get update && apt-get install -y curl sqlite3
 
   if ! type "go" > /dev/null; then
-    apt-get install -y golang
+    go_version=1.11.13
+    curl -f -L -o go.tgz "https://dl.google.com/go/go${go_version}.linux-amd64.tar.gz" && \
+      tar -C /usr/local -xzf go.tgz && \
+      rm go.tgz && \
+      ln -s "/usr/local/go/bin/go" "/usr/local/bin/go"
+    go version
   fi
 }
 
