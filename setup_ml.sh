@@ -2,8 +2,13 @@
 
 set -e
 
-setup() {
-  apt-get update && apt-get install -y curl sqlite3
+setup_common() {
+  apt-get update
+  apt-get install -y curl python3 python3-pip
+}
+
+setup_data_collection_env() {
+  apt-get install -y sqlite3
 
   if ! type "go" > /dev/null; then
     go_version=1.11.13
@@ -13,25 +18,22 @@ setup() {
       ln -s "/usr/local/go/bin/go" "/usr/local/bin/go"
     go version
   fi
+
+  pip3 install pydeps
 }
 
-install_xgboost() {
+setup_model_env() {
   # cmake (xgboost needs latest cmake)
   curl -f -L -o "cmake.sh" "https://github.com/Kitware/CMake/releases/download/v3.18.4/cmake-3.18.4-Linux-x86_64.sh"
   mkdir -p /opt/cmake
   yes | sh cmake.sh --prefix=/opt/cmake
   ln -s /opt/cmake/cmake-3.18.4-Linux-x86_64/bin/cmake /usr/local/bin/cmake
 
-  # python3, xgboost
-  apt-get update
-  apt-get install -y python3 python3-pip
   pip3 install xgboost
-}
 
-clean() {
   rm -rf /opt/cmake/cmake-3.18.4-Linux-x86_64/bin/cmake /usr/local/bin/cmake
 }
 
-setup
-install_xgboost
-clean
+setup_common
+setup_data_collection_env
+setup_model_env
