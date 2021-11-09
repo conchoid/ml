@@ -18,8 +18,6 @@ setup_data_collection_env() {
       ln -s "/usr/local/go/bin/go" "/usr/local/bin/go"
     go version
   fi
-
-  pip3 install pydeps
 }
 
 setup_model_env() {
@@ -29,7 +27,8 @@ setup_model_env() {
   yes | sh cmake.sh --prefix=/opt/cmake
   ln -s /opt/cmake/cmake-3.18.4-Linux-x86_64/bin/cmake /usr/local/bin/cmake
 
-  pip3 install xgboost
+  pip3 install numpy==1.18.5
+  pip3 install xgboost==1.1.1
 
   rm -rf /opt/cmake/cmake-3.18.4-Linux-x86_64/bin/cmake /usr/local/bin/cmake
 }
