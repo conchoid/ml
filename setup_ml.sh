@@ -2,7 +2,7 @@
 
 set -e
 
-PIP3_BIN=/root/.pyenv/shims/pip3
+PIP3_BIN=/opt/ml/.pyenv/shims/pip3
 
 setup_common() {
   apt-get update
@@ -13,9 +13,12 @@ setup_common() {
           libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
           libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
           libffi-dev liblzma-dev git
-  git clone https://github.com/pyenv/pyenv.git /root/.pyenv
-  /root/.pyenv/bin/pyenv install 3.7.3
-  /root/.pyenv/bin/pyenv global 3.7.3
+  mkdir -p /opt/ml
+  git clone https://github.com/pyenv/pyenv.git /opt/ml/.pyenv
+  export PYENV_ROOT=/opt/ml/.pyenv
+  /opt/ml/.pyenv/bin/pyenv install 3.7.3
+  /opt/ml/.pyenv/bin/pyenv global 3.7.3
+  chmod -R 777 /opt/ml
 }
 
 setup_data_collection_env() {
