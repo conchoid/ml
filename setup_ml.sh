@@ -30,6 +30,8 @@ setup_data_collection_env() {
       ln -s "/usr/local/go/bin/go" "/usr/local/bin/go"
     go version
   fi
+
+  "$PIP3_BIN" install pytest==6.2.5
 }
 
 setup_xgboost() {
