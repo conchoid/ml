@@ -50,7 +50,7 @@ setup_xgboost() {
 
 setup_stable_baselines() {
   apt-get install -y zlib1g-dev libjpeg-dev jq gfortran libopenblas-dev liblapack-dev
-  "$PIP3_BIN" install stable_baselines3==1.3.0 sklearn psutil
+  "$PIP3_BIN" install stable_baselines3==1.3.0 psutil cloudpickle==1.6.0 pickle5==0.0.11 gym==0.19.0 numpy==1.21.6 pandas==1.3.5 scikit-learn==1.0.2 torch==1.11.0
 }
 
 setup_model_env() {
