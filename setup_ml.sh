@@ -16,8 +16,8 @@ setup_common() {
   mkdir -p /opt/ml
   git clone https://github.com/pyenv/pyenv.git /opt/ml/.pyenv
   export PYENV_ROOT=/opt/ml/.pyenv
-  /opt/ml/.pyenv/bin/pyenv install 3.7.3
-  /opt/ml/.pyenv/bin/pyenv global 3.7.3
+  /opt/ml/.pyenv/bin/pyenv install 3.8.20
+  /opt/ml/.pyenv/bin/pyenv global 3.8.20
   chmod -R 777 /opt/ml
 }
 
